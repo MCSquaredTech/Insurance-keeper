@@ -1,0 +1,15 @@
+
+
+.formBox { 
+    border: 1px solid #eee; 
+    border-radius: 4px;
+    max-width: 450px;
+
+    padding: 5px 13px 0 0; 
+
+}
+
+.formBox input {
+    color: #eee;
+    padding: 10px 20px 0 0;
+}

@@ -1,0 +1,37 @@
+@import '~bootstrap/dist/css/bootstrap.css';
+
+body { 
+    background: #2B3036; 
+    color: #eee;
+    padding: 0 0 0 0; 
+    margin: 0 0 0 0; 
+}
+
+.pageLine { 
+    border-top: 1px solid #eee;
+    padding: 12px 12px 0 0;
+    margin: 10px;
+}
+
+.mainPage {
+    padding: 0 10px 0 15x;
+    margin: 0 auto;
+
+    height: calc(100vh - 150px);
+    width: auto;
+
+    gap: 15px;
+
+}
+
+.mainPage a { 
+    display: flex;
+    text-decoration: none;
+    text-align: center;
+    padding: 6px; 
+    width: 6rem;
+    border-radius: 4px;
+    background: cornflowerblue;
+    color: white;
+}
+
