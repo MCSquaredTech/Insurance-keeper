@@ -30,6 +30,15 @@ const HomeOwner = () => {
                 readOnly={false}
                 placeholder='Email Address' />
         </div>
+        <div className="form-group row">
+          <label htmlFor="password" className="col-sm-4 col-form-label">Password:</label>
+          <input type="password" 
+                className="form-control-plaintext" 
+                id="password" 
+                size={"24"}
+                readOnly={false}
+                placeholder='Password' />
+        </div>
         
       </form>
     </div>

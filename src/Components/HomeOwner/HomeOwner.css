@@ -15,10 +15,36 @@
 }
 
 .formBox input {
-    color: #eee;
+    color: black;
     margin: 0px 15px 15px 15px;
+    padding: 10px;
     border-left: 1px solid #111;
     border-top: 1px solid #111;
     border-bottom: 1px solid #999; 
     border-right: 1px solid #999; 
 }
+
+
+/* Home Address Style Sheet */
+
+.company-address-form { 
+    width: clac(100vw - 30%);
+    display: flex; 
+    flex-direction: column wrap;
+    flex-grow: 2;
+    padding: 2px 0 0 5px; 
+    margin: 4px;
+  }
+  
+  .company-address-form .input-block { 
+    display: block; 
+    padding: 5px; 
+    margin-left: 5px;
+    margin-bottom: 25px;
+  }
+  
+  .input-inline { 
+    padding: 4px; 
+    margin-left: 5px;
+    margin-bottom: 25px;
+  }

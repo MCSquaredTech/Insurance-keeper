@@ -30,7 +30,7 @@ const Header = () => {
           </NavDropdown>
         </Nav>
         <Nav>
-          <Nav.Link to="#">
+          <Nav.Link to="login">
             <span>
               <io.IoLogInOutline size={25}/>
               Login
@@ -38,8 +38,13 @@ const Header = () => {
           </Nav.Link>
           <Nav.Link eventKey={2} to="#">
             <span> 
-              <io.IoPencil size={20}/>
               Signup
+            </span>
+          </Nav.Link>
+          <Nav.Link to="settings">
+            <span>
+              <io.IoSettingsSharp size={20}/>
+              Settings
             </span>
           </Nav.Link>
         </Nav>
