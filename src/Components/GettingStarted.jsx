@@ -26,7 +26,7 @@ const GettingStarted = () => {
           <Modal.Title>Modal title</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <HomeAddress />
+          <HomeOwner user={[]} />
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>

@@ -1,45 +1,40 @@
 import './HomeOwner.css'
 
 
-const HomeOwner = () => {
+const HomeOwner = ({user }) => {
+  const { First, Last, Email } = user; 
+
+  const handleChange = () => { 
+
+  }
+
   return (
-    <div className="formBox">
-      <form action="" className="form">
-        <div className="form-group row">
-          <label htmlFor="firstName" className="col-sm-4 col-form-label">First Name:</label>
+    <div className="company-address-form formBox">
+      <form>
+
           <input type="text" 
-                className="form-control-plaintext" 
+                className="input-block" 
                 id="firstName" 
                 size={"30"}
                 placeholder='First Name' />
-        </div>
-        <div className="form-group row">
-          <label htmlFor="lastName" className="col-sm-4 col-form-label">Last Name:</label>
+
           <input type="text" 
-                className="form-control-plaintext" 
+                className="input-block" 
                 id="lastName" 
                 size={"30"}
                 placeholder='Last Name' />
-        </div>
-        <div className="form-group row">
-          <label htmlFor="email" className="col-sm-4 col-form-label">Email Address:</label>
+          
           <input type="email" 
-                className="form-control-plaintext" 
+                className="input-block" 
                 id="email" 
-                size={"24"}
-                readOnly={false}
-                placeholder='Email Address' />
-        </div>
-        <div className="form-group row">
-          <label htmlFor="password" className="col-sm-4 col-form-label">Password:</label>
+                size={"30"}
+                placeholder='Email@Somewhere.com' />
+
           <input type="password" 
-                className="form-control-plaintext" 
+                className="input-block" 
                 id="password" 
-                size={"24"}
-                readOnly={false}
-                placeholder='Password' />
-        </div>
-        
+                size={"30"}
+                placeholder='password' />
       </form>
     </div>
   )

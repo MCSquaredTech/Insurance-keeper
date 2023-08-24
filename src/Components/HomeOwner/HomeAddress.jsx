@@ -10,11 +10,18 @@ const HomeAddress = () => {
   const handleChange = (e) => { 
     setValue(e.target.value);
   } 
+  
+  AddressAutofill.popoverOptions = { 
+    placement: 'top-start',
+    flip: true, 
+    offset: 5
+  };
 
   return (
-    <div className='company-address-form'>
+    <div className='company-address-form formBox'>
       <form>
-        <AddressAutofill accessToken={mapToken}>
+        <AddressAutofill 
+          accessToken={mapToken} >
           <input type='text'
             className='input-block'
             autoComplete='address-line1'
@@ -62,7 +69,7 @@ const HomeAddress = () => {
 
           /> 
           <input type="text"
-            className='input-block' 
+            className='input-inline' 
             autoComplete='country-name'
             name='country'
             // value={value}

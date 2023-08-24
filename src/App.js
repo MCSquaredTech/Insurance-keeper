@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+
 import { createBrowserRouter, 
         Route, 
         createRoutesFromElements,
@@ -11,20 +13,31 @@ import ItemDetails from './Pages/ItemDetails';
 import Support from './Pages/Support';
 import Start from "./Pages/Start";
 
-const router = createBrowserRouter( 
-  createRoutesFromElements(
-    <Route path="/" element={<PageLayout />} >
-      <Route index element={<Home />} /> 
-      <Route path="getStarted" element={<Start />} />
-      <Route path="addItems" element={<AddItems />} />
-      <Route path="itemDetails" element={<ItemDetails />} /> 
-      <Route path="support" element={<Support />} />
-    </Route>
-  )
-)
-
 
 function App() {
+  const [ user, setUser ] = useState([]);
+
+  const userInfromation = () => {
+  
+  }
+
+  useEffect(() => {
+    // userInformation()
+  },[]); 
+
+
+  const router = createBrowserRouter( 
+    createRoutesFromElements(
+      <Route path="/" element={<PageLayout />} >
+        <Route index element={<Home user={user} />} /> 
+        <Route path="getStarted" element={<Start />} />
+        <Route path="addItems" element={<AddItems />} />
+        <Route path="itemDetails" element={<ItemDetails />} /> 
+        <Route path="support" element={<Support />} />
+      </Route>
+    )
+  )
+
   return (
     <RouterProvider router={router} />
   );

@@ -1,4 +1,5 @@
-
+import { Link } from 'react-router-dom';
+import Start from './Start';
 import GettingStarted from '../Components/GettingStarted';
 
 
@@ -22,6 +23,7 @@ const Home = () => (
     </p>
 
     <GettingStarted />
+    <Link to="getStarted" >Start</Link>
 
   </div>
 )
