@@ -1,27 +1,19 @@
 import './HomeOwner.css';
 import React, { useState } from 'react'
-import { AddressAutofill } from '@mapbox/search-js-react';
 
-const HomeAddress = () => {
+const HomeAddress = ({setAddressData}) => {
   const [value, setValue] = useState('')
   
-  const mapToken = process.env.REACT_APP_MAPBOX_APIKEY;
+
 
   const handleChange = (e) => { 
-    setValue(e.target.value);
+    const { name, value } = e.target.value; 
+    setAddressData(); 
   } 
   
-  AddressAutofill.popoverOptions = { 
-    placement: 'top-start',
-    flip: true, 
-    offset: 5
-  };
-
   return (
     <div className='company-address-form formBox'>
       <form>
-        <AddressAutofill 
-          accessToken={mapToken} >
           <input type='text'
             className='input-block'
             autoComplete='address-line1'
@@ -31,7 +23,7 @@ const HomeAddress = () => {
             placeholder='Address'
             onChange={handleChange}
             /> 
-         </AddressAutofill>
+
           <input type="text"
             className='input-block' 
             autoComplete='address-line2'

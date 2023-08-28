@@ -7,29 +7,65 @@ import { createBrowserRouter,
 
 // Import Pages Layout 
 import PageLayout from "./Pages/PageLayout";
+
+// Import Pages 
 import Home from "./Pages/Home";
 import AddItems from './Pages/AddItem';
 import ItemDetails from './Pages/ItemDetails';
 import Support from './Pages/Support';
 import Start from "./Pages/Start";
 
+// Import DataSourceAPI 
+import { UserDataSourceAPI } from "./DataSource/UserDataProvider";
+import { logDOM } from "@testing-library/react";
+
+
+
 
 function App() {
   const [ user, setUser ] = useState([]);
-
-  const userInfromation = () => {
+  // Form handles 
+  const [ saveFlag, setSaveFlag ] = useState(false); 
+  const [ editFlag, setEditFlag ] = useState(false); 
   
+  const getUserInfo = async () => { 
+      setUser(await UserDataSourceAPI.getUser());
+    }
+  
+  const newUser = () => {
+    return (
+      setUser({
+        "first": "",
+        "last": "",
+        "email": "",
+        "password": "",
+        "phone": "",
+        "id": ""
+       })
+    )
   }
 
+  const onSave = async (userInfo) => {
+      await UserDataSourceAPI.postUser(userInfo.userData);
+      getUserInfo();
+  } 
+
+  const handleEdit = async (user) => { 
+  }
   useEffect(() => {
-    // userInformation()
-  },[]); 
+    getUserInfo();
+    if (user.length === 0) { 
+      newUser();
+    }
+  },[])
 
-
-  const router = createBrowserRouter( 
+   const router = createBrowserRouter( 
     createRoutesFromElements(
       <Route path="/" element={<PageLayout />} >
-        <Route index element={<Home user={user} />} /> 
+        <Route index element={<Home 
+            user={user} 
+            onSave={onSave}
+            OnEdit={handleEdit}  />} /> 
         <Route path="getStarted" element={<Start />} />
         <Route path="addItems" element={<AddItems />} />
         <Route path="itemDetails" element={<ItemDetails />} /> 
@@ -37,7 +73,7 @@ function App() {
       </Route>
     )
   )
-
+        
   return (
     <RouterProvider router={router} />
   );
