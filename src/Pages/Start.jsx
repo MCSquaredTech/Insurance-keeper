@@ -1,4 +1,3 @@
-import { Link, NavLink } from 'react-router-dom';
 import HomeOwner from '../Components/HomeOwner/HomeOwner';
 import HomeAddress from '../Components/HomeOwner/HomeAddress';
 

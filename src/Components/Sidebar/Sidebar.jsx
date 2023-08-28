@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as faIcons from 'react-icons/fa'; 
 import * as bsIcons from 'react-icons/bs';
-import * as riIcons from 'react-icons/ri';
 import * as aiIcons from 'react-icons/ai';
+
 import { 
   Sidebar, 
   Menu, 

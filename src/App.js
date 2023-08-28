@@ -24,6 +24,7 @@ import { logDOM } from "@testing-library/react";
 
 function App() {
   const [ user, setUser ] = useState([]);
+  const [ currentUser, setCurrentUser ] = useState({}); 
   // Form handles 
   const [ saveFlag, setSaveFlag ] = useState(false); 
   const [ editFlag, setEditFlag ] = useState(false); 
@@ -31,41 +32,35 @@ function App() {
   const getUserInfo = async () => { 
       setUser(await UserDataSourceAPI.getUser());
     }
-  
-  const newUser = () => {
-    return (
-      setUser({
-        "first": "",
-        "last": "",
-        "email": "",
-        "password": "",
-        "phone": "",
-        "id": ""
-       })
-    )
-  }
 
   const onSave = async (userInfo) => {
-      await UserDataSourceAPI.postUser(userInfo.userData);
-      getUserInfo();
+    const response = await UserDataSourceAPI.postUser(userInfo);
+    setCurrentUser({});
+    setCurrentUser(await UserDataSourceAPI.getUserById(response));
+    getUserInfo();
+    console.log(currentUser, user);
+    // setCurrentUser(await UserDataSourceAPI.getUserById(response)); 
+    // console.log("current user = ", currentUser);
   } 
 
-  const handleEdit = async (user) => { 
+  const onEdit = async (userInfo) => {
+    await UserDataSourceAPI.putUser(currentUser);
+    getUserInfo(); 
   }
+
   useEffect(() => {
     getUserInfo();
-    if (user.length === 0) { 
-      newUser();
-    }
+    
   },[])
 
    const router = createBrowserRouter( 
     createRoutesFromElements(
       <Route path="/" element={<PageLayout />} >
         <Route index element={<Home 
-            user={user} 
-            onSave={onSave}
-            OnEdit={handleEdit}  />} /> 
+          user={currentUser} 
+          setUser={setCurrentUser}
+          onSave={onSave}
+          OnEdit={onEdit}  />} /> 
         <Route path="getStarted" element={<Start />} />
         <Route path="addItems" element={<AddItems />} />
         <Route path="itemDetails" element={<ItemDetails />} /> 

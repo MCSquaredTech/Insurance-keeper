@@ -2,21 +2,10 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import HomeOwner from './HomeOwner/HomeOwner';
-import AddressModal from './AddressModal';
 
-const GettingStarted = ({user={},  onSave, onEdit}) => {
+const GettingStarted = ({user, setUser,  onSave, onEdit}) => {
   const [ saveFlag, setSaveFlag] = useState(true);
   const [ editFlag, setEditFlag ] = useState(false);
-
-  const [ userData, setUserData ] = useState(user);
-  const { first, last, phone, email, password } = userData;
-      
-
-  const handleChange = (e) => {
-        const { name, value } = e.target;
-        setUserData((prevData) => ({...prevData, [name]: value}))
-      
-  }
 
   const [show, setShow] = useState(false);
 
@@ -24,13 +13,13 @@ const GettingStarted = ({user={},  onSave, onEdit}) => {
   const handleShow = () => setShow(true);
 
   const handleSave = () => {
-    onSave({userData});
+    onSave(user);
     setSaveFlag(false);
     setShow(false);
   }
 
   const handleEdit = () => { 
-    onEdit(userData);
+    onEdit(user);
     setEditFlag(false); 
     setShow(false);
   }
@@ -52,7 +41,7 @@ const GettingStarted = ({user={},  onSave, onEdit}) => {
           <Modal.Title>Modal title</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <HomeOwner userData={userData}  setUserData={setUserData} />
+          <HomeOwner user={user}  setUser={setUser} />
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>

@@ -1,11 +1,9 @@
-import { Link } from 'react-router-dom';
-import Start from './Start';
 import GettingStarted from '../Components/GettingStarted';
 
 
 import './Page.css';
 
-const Home = ({user={}, onSave, onEdit}) => {
+const Home = ({user, setUser, onSave, onEdit}) => {
                 
 
 
@@ -26,7 +24,7 @@ const Home = ({user={}, onSave, onEdit}) => {
         deserunt fugiat enim magna magna do reprehenderit laboris proident minim enim.
       </p>
 
-      <GettingStarted user={user} onSave={onSave} onEdit={onEdit} />
+      <GettingStarted user={user} setUser={setUser} onSave={onSave} onEdit={onEdit} />
 
     </div>
 )}

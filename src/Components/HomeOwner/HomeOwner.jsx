@@ -1,14 +1,16 @@
+
 import './HomeOwner.css'
-import { useState } from 'react';
 
 
-const HomeOwner = ({userData, setUserData}) => {   
-      const { id, first, last, phone, email, password } = userData;
+
+const HomeOwner = ({user, setUser}) => {   
+      console.log(user);
+      const { id, first, last, phone, email, password } = user;
       
 
       const handleChange = (e) => {
             const { name, value } = e.target;
-            setUserData((prevData) => ({...prevData, [name]: value}))
+            setUser((prevData) => ({...prevData, [name]: value}))
           
       }
 

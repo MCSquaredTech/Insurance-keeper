@@ -1,5 +1,4 @@
 
-
 const mockApiKey = process.env.REACT_APP_MOCKAPI_KEY;
 
 class UserDataProvider { 
@@ -14,8 +13,9 @@ class UserDataProvider {
     }
 
     getUserById = async (User) => { 
+        console.log(User);
         try { 
-            const resp = await fetch(`${mockApiKey}/user${User.id}`);
+            const resp = await fetch(`${mockApiKey}/user/${User.id}`);
             return await resp.json();
         } catch (e) { 
             console.log('The Fetch Request for the User Information Failed', e);
@@ -32,6 +32,7 @@ class UserDataProvider {
                 body: JSON.stringify(User)
             });
             return await resp.json(); 
+            
         } catch(e) { 
             console.log("This is the user object", User);
             console.log('The Post Request for User Failed', e);
