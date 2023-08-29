@@ -1,9 +1,11 @@
+// React Hooks - 
 import { useState, useEffect } from "react";
 
+// import React Router Dom 
 import { createBrowserRouter, 
-        Route, 
-        createRoutesFromElements,
-        RouterProvider} from "react-router-dom"; 
+          Route, 
+          createRoutesFromElements,
+          RouterProvider} from "react-router-dom"; 
 
 // Import Pages Layout 
 import PageLayout from "./Pages/PageLayout";
@@ -17,20 +19,18 @@ import Start from "./Pages/Start";
 
 // Import DataSourceAPI 
 import { UserDataSourceAPI } from "./DataSource/UserDataProvider";
-import { logDOM } from "@testing-library/react";
-
-
-
 
 function App() {
   const [ user, setUser ] = useState([]);
   const [ currentUser, setCurrentUser ] = useState({}); 
-  // Form handles 
-  const [ saveFlag, setSaveFlag ] = useState(false); 
-  const [ editFlag, setEditFlag ] = useState(false); 
-  
+   
   const getUserInfo = async () => { 
-      setUser(await UserDataSourceAPI.getUser());
+      setUser(await UserDataSourceAPI.getUser()); 
+    }
+
+    const getUserById = () => { 
+      console.log("getUserById - ",user);
+      setCurrentUser( UserDataSourceAPI.getUserById(user));
     }
 
   const onSave = async (userInfo) => {
@@ -38,9 +38,6 @@ function App() {
     setCurrentUser({});
     setCurrentUser(await UserDataSourceAPI.getUserById(response));
     getUserInfo();
-    console.log(currentUser, user);
-    // setCurrentUser(await UserDataSourceAPI.getUserById(response)); 
-    // console.log("current user = ", currentUser);
   } 
 
   const onEdit = async (userInfo) => {
@@ -49,8 +46,9 @@ function App() {
   }
 
   useEffect(() => {
+    console.log("Get User Information");
     getUserInfo();
-    
+        
   },[])
 
    const router = createBrowserRouter( 
@@ -63,7 +61,9 @@ function App() {
           OnEdit={onEdit}  />} /> 
         <Route path="getStarted" element={<Start />} />
         <Route path="addItems" element={<AddItems />} />
-        <Route path="itemDetails" element={<ItemDetails />} /> 
+        <Route path="itemDetails" element={<ItemDetails 
+          user={user} 
+          setUser={setUser} />} /> 
         <Route path="support" element={<Support />} />
       </Route>
     )

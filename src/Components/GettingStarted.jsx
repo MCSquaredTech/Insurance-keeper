@@ -41,7 +41,7 @@ const GettingStarted = ({user, setUser,  onSave, onEdit}) => {
           <Modal.Title>Modal title</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <HomeOwner user={user}  setUser={setUser} />
+          <HomeOwner user={user}  setUser={setUser} enable={true} />
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>

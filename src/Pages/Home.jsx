@@ -1,5 +1,7 @@
 import GettingStarted from '../Components/GettingStarted';
+import ItemDetails from '../Pages/ItemDetails'; 
 
+import { Link } from 'react-router-dom';
 
 import './Page.css';
 
@@ -8,6 +10,7 @@ const Home = ({user, setUser, onSave, onEdit}) => {
 
 
   return (
+    <>
     <div className="mainPage pageLine">
       <h1>Home Inventory Catalog</h1>
       <p>
@@ -23,10 +26,16 @@ const Home = ({user, setUser, onSave, onEdit}) => {
         reprehenderit laboris cillum. Excepteur do qui fugiat dolor id est et deserunt est aute sunt id. Nostrud
         deserunt fugiat enim magna magna do reprehenderit laboris proident minim enim.
       </p>
-
-      <GettingStarted user={user} setUser={setUser} onSave={onSave} onEdit={onEdit} />
+    </div>
+    <div>
+      <Link id='RouteToItems'
+        className='btn btn-primary'
+        to="/itemDetails">
+          Getting Started
+      </Link>
 
     </div>
+    </>
 )}
 
 export default Home

@@ -1,12 +1,13 @@
+import { useState } from 'react';
+import './HomeOwner.css';
 
-import './HomeOwner.css'
 
 
-
-const HomeOwner = ({user, setUser}) => {   
-      console.log(user);
+const HomeOwner = ({ user, setUser, readOnly }) => {   
+      // const [ enabled, setEnabled ] = useState(enabled);
+      console.log(user.user);
       const { id, first, last, phone, email, password } = user;
-      
+      console.log(first, last, phone, email);
 
       const handleChange = (e) => {
             const { name, value } = e.target;
@@ -22,6 +23,7 @@ const HomeOwner = ({user, setUser}) => {
                               name="first"
                               value={first}
                               size={"30"}
+                              // readOnly={readOnly}
                               onChange={handleChange}
                               placeholder='First Name' />
 
@@ -30,6 +32,7 @@ const HomeOwner = ({user, setUser}) => {
                               name="last"
                               value={last}
                               size={"30"}
+                              // readOnly={readOnly}
                               onChange={handleChange}
                               placeholder='Last Name' />
 
@@ -39,6 +42,7 @@ const HomeOwner = ({user, setUser}) => {
                               name="phone"
                               onChange={handleChange}
                               size={"30"}
+                              // readOnly={readOnly}
                               placeholder='Phone Number' />
 
                         <input type="email"
@@ -47,6 +51,7 @@ const HomeOwner = ({user, setUser}) => {
                               name="email"
                               onChange={handleChange}
                               size={"30"}
+                              // readOnly={readOnly}
                               placeholder='Email@Somewhere.com' />
 
                         <input type="password"
@@ -55,7 +60,8 @@ const HomeOwner = ({user, setUser}) => {
                               name="password"
                               onChange={handleChange}
                               size={"30"}
-                              placeholder='password' />
+                              // readOnly={readOnly}
+                              placeholder='Password' />
                   </form>
             </div>
       )
