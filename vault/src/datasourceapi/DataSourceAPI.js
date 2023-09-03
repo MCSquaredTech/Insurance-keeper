@@ -1,44 +1,26 @@
 
-const mockIoAPI = process.env.REACT_APP_MOCKIO_API;
+const mockApiKey = process.env.REACT_APP_MOCKIO_API;
 
 class DataSourceApi { 
 
-    getUsers = async () => { 
-        fetch(`${mockIoAPI}/user`)
+    processFetch(option) { 
+
+        const [ loading, setLoading ] = useState(false);
+  const [ data, setData ] = useState(null);
+  const [ error, setError ] = useState(); 
+  
+  useEffect(() => {
+    setLoading(true); 
+    fetch(url)
+        .then(response => response.json())
+        .then(data => setData(data))
+        .catch(err => setError(err))
+        .finally(() => { 
+            setLoading(false);
+        })
+    },[url]);
+
+  return { loading, data, error };
     }
-
-    getUserById = async (User) => { 
-
-    }
-
-    postUser = async (User) => { 
-
-    }
-
-    putUser = async (User) => { 
-
-    }
-
-    deleteUser = async (User) => { 
-
-    }
-
-    getAddressByUser = async (User) => { 
-
-    }
-
-    postAddress = async (User, Address) => { 
-
-    }
-
-    putAddress = async (User, Address) => { 
-
-    }
-
-    deleteAddress = async (User, Address) => { 
-
-    }
-
-
 
 }

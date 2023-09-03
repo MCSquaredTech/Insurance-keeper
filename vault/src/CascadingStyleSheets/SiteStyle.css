@@ -1,0 +1,44 @@
+html, body { 
+
+    padding: 0; 
+    margin: 0; 
+
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1rem;
+    
+}
+
+/* Form Styles */ 
+.formBox { 
+    display: flex;
+    border: 1px solid #777; 
+    border-radius: 4px;
+    align-content: end;
+    align-items: end;
+}
+
+.formBox input {
+    color: #777;
+    margin: 5px;
+    border-radius: 5px;
+    border-left: 1px solid #2a10b0;
+    border-top: 1px solid #2a10b0;
+    border-bottom: 1px solid #2a54b1; 
+    border-right: 1px solid #2a54b1; 
+}
+
+.formOutline { 
+    display: flex; 
+    flex-direction: column wrap;
+    flex-grow: 2;
+    padding: 5px; 
+    margin: 5px;
+  }
+
+.formOutline inlineBlock  { 
+    display: inline-block;
+    padding: 5px; 
+    margin-left: 5px;
+    margin-bottom: 25px;
+    height: 33px;
+  }
