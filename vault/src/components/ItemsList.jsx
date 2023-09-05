@@ -1,9 +1,9 @@
 
 const ItemsList = () => {
   return (
-    <div>
+    <>
       
-    </div>
+    </>
   )
 }
 

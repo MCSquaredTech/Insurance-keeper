@@ -1,5 +1,6 @@
 import GettingStarted from '../Components/GettingStarted';
 import ItemDetails from '../Pages/ItemDetails'; 
+import ItemContent from '../Components/ItemContent';
 
 import { Link } from 'react-router-dom';
 
@@ -28,6 +29,7 @@ const Home = ({user, setUser, onSave, onEdit}) => {
       </p>
     </div>
     <div>
+      <ItemContent />
       <Link id='RouteToItems'
         className='btn btn-primary'
         to="/itemDetails">
