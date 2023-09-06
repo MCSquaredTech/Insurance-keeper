@@ -1,5 +1,5 @@
 
-const ItemsList = () => {
+const ItemsList = ({data, setData, OnSave, OnEdit}) => {
   return (
     <>
       

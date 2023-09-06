@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const Personal = ({ data, setData }) => {
+const Personal = ({ data, setData, OnEdit }) => {
     const { first, last, phone, email } = data;
 
     const handleOnChange = (event) => {

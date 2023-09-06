@@ -11,6 +11,9 @@ function App() {
   const [ user, setUser ] = useState();
   const { address, setAddress } = useState();
 
+  const handlePersonalEdit = (dataSet) => { 
+    
+  }
 
   { (loading) && <h1> Loading... </h1> ;
     (error) && console.log(error) }
@@ -18,7 +21,9 @@ function App() {
   return (
     <>
       <div>
-        { data && <Personal data={data} setData={setUser} /> }
+        { data && <Personal data={data} 
+                            setData={setUser}
+                            onEdit={handlePersonalEdit} /> }
         { address && <Address data={address} setData={setAddress} /> }
       </div>
     </>
