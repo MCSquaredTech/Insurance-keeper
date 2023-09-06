@@ -64,6 +64,21 @@ const Address = (data, setData) => {
             placeholder='Country'
             size={"20"}
           />
+          { readOnly ?
+              <Button variant="primary"
+                  onClick={handleEdit}>
+                      <biIcon.BiSolidEdit /> Edit
+              </Button> : 
+              <Button variant="primary"
+              onClick={handleSave}>
+                  <biIcon.BiSolidSave /> Save
+              </Button> }{
+            !readOnly && 
+              <Button variant="primary"
+                  onClick={() => setReadOnly(true)}>
+                      <biIcon.BiSolidLock /> Cancel 
+              </Button>    
+          }
       </form>
     </div>
   )
