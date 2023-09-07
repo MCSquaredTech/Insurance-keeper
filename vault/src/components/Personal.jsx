@@ -1,6 +1,12 @@
+
 import { useState } from "react";
+import * as biIcon from 'react-icons/bi';
+
+import Button from 'react-bootstrap/Button';
 
 const Personal = ({ data, setData, OnEdit }) => {
+    const [ readOnly, setReadOnly ] = useState(true);
+    const [ dataBackup, setDataBackup ] = useState(null);
     const { first, last, phone, email } = data;
 
     const handleOnChange = (event) => {
@@ -8,6 +14,21 @@ const Personal = ({ data, setData, OnEdit }) => {
         setData((prevData) => ({ ...prevData, [name]: value }))
         console.log(data);
     }
+
+    const handleEdit = () => { 
+        setDataBackup(data);
+        setReadOnly(false);
+      }
+    
+      const handleSave = (data) => {
+        OnEdit(data);
+        setReadOnly(true);
+      }
+
+      const handleCancel = () => { 
+        setData(dataBackup); 
+        setReadOnly(true);
+      }
 
     return (
         <>
@@ -48,7 +69,7 @@ const Personal = ({ data, setData, OnEdit }) => {
                         </Button> }{
                       !readOnly && 
                         <Button variant="primary"
-                            onClick={() => setReadOnly(true)}>
+                            onClick={handleCancel}>
                                 <biIcon.BiSolidLock /> Cancel 
                         </Button>    
                     }
