@@ -18,7 +18,7 @@ class DataSourceApi {
     getPolicyHolder = async () => { 
         try { 
             
-            const url = `${mockApiKey}user/2`;
+            const url = `${mockApiKey}/user/2`;
             const response = await fetch(url, { 
                 method: "GET", 
                 header: { 
@@ -33,9 +33,28 @@ class DataSourceApi {
 
     }
 
+    putPolicyHolder = async (holder) => { 
+        const url = `${mockApiKey}/user/${holder.id}`
+        console.log(url);
+        console.log(holder);
+        try { 
+            const response = await fetch(url, { 
+                method: "PUT",
+                header: { 
+                    "content-type": "application/json"
+                },
+                body: JSON.stringify(holder)
+            }); 
+            return await response.json();
+        } catch (e) { 
+            console.log('The Put Request for User Failed', e);
+        }
+    } 
+
+
     getCurrentAddress = async () => { 
         try{ 
-            const url = `${mockApiKey}address/1`
+            const url = `${mockApiKey}/address/1`
             const response = await fetch(url, { 
                 method: "GET", 
                 header: { 

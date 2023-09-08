@@ -4,10 +4,10 @@ import * as biIcon from 'react-icons/bi';
 
 import Button from 'react-bootstrap/Button';
 
-const Personal = ({ data, setData, OnEdit }) => {
+const Personal = ({ data, setData, onEdit }) => {
     const [ readOnly, setReadOnly ] = useState(true);
     const [ dataBackup, setDataBackup ] = useState(null);
-    const { first, last, phone, email } = data;
+    const { first, last, phone, email, id } = data;
 
     const handleOnChange = (event) => {
         const { name, value } = event.target;
@@ -20,8 +20,8 @@ const Personal = ({ data, setData, OnEdit }) => {
         setReadOnly(false);
       }
     
-      const handleSave = (data) => {
-        OnEdit(data);
+      const handleSave = () => {
+        onEdit(data);
         setReadOnly(true);
       }
 
@@ -39,25 +39,29 @@ const Personal = ({ data, setData, OnEdit }) => {
                         className="inlineBlock"
                         name="first"
                         value={first}
-                        onChange={handleOnChange} />
+                        onChange={handleOnChange}
+                        readOnly={readOnly} />
                     <input
                         type="text"
                         className="inlineBlock"
                         name="last"
                         value={last}
-                        onChange={handleOnChange} />
+                        onChange={handleOnChange}
+                        readOnly={readOnly} />
                     <input
                         type="phone"
                         className="inlineBlock"
                         name=" phone"
                         value={phone}
-                        onChange={handleOnChange} />
+                        onChange={handleOnChange}
+                        readOnly={readOnly} />
                     <input
                         type="email"
                         className="inlineBlock"
                         name="email"
                         value={email}
-                        onChange={handleOnChange} />
+                        onChange={handleOnChange}
+                        readOnly={readOnly} />
                     { readOnly ?
                         <Button variant="primary"
                             onClick={handleEdit}>

@@ -9,8 +9,13 @@ function App() {
   const [ user, setUser ] = useState(null);
   const [ address, setAddress ] = useState(null);
 
-  const handlePersonalEdit = (dataSet) => { 
-    console.log(dataSet);
+  const handlePersonalEdit = async (dataSet) => { 
+    await DataSourceAPI.putPolicyHolder(dataSet); 
+    getPolicyHolder();
+  }
+
+  const handleAddressEdit = (dataSet) => { 
+    console.log(dataSet); 
   }
 
   const getPolicyHolder = async () => { 
@@ -34,7 +39,9 @@ function App() {
         { user && <Personal data={user} 
                             setData={setUser}
                             onEdit={handlePersonalEdit} /> }
-        { address && <Address data={address} setData={setAddress} /> }
+        { address && <Address data={address} 
+                              setData={setAddress}
+                              onEdit={handleAddressEdit} /> }
       </div>
     </>
   )

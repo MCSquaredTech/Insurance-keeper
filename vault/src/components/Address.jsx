@@ -3,19 +3,25 @@ import * as biIcon from 'react-icons/bi';
 
 import Button from 'react-bootstrap/Button';
 
-const Address = (data, setData, onEdit) => {
+const Address = ({ data, setData, onEdit }) => {
   const [ readOnly, setReadOnly ] = useState(true);
   const [ dataBackup, setDataBackup ] = useState(null);
 
-  const { address, unit, city, state, postalcode, country } = data.data
+  const { address, unit, city, state, postalcode, country } = data
   const handleChange = (e) => { 
     const { name, value } = e.target;
     setData((prevData) => ({ ...prevData, [name]: value }));
+    console.log(data);
   }
 
   const handleEdit = () => { 
     setDataBackup(data);
     setReadOnly(false);
+  }
+
+  const handleSave = () => {
+    onEdit(data);
+    setReadOnly(true);
   }
 
   const handleCancel = () => { 
@@ -28,57 +34,62 @@ const Address = (data, setData, onEdit) => {
       <form>
           <input type='text'
             className='input-block'
-            autoComplete='address-line1'
             name='address'
             value={address}
             size={"45"}
+            readOnly={readOnly}
             placeholder='Address'
             onChange={handleChange}
             /> 
 
           <input type="text"
             className='input-block' 
-            autoComplete='address-line2'
             name='unit'
             value={unit}
-            placeholder='Optional Information'
             size={"45"}
+            readOnly={readOnly}
+            placeholder='Optional Information'
+            onChange={handleChange}
 
           /> 
           <input type="text"
             className='input-inline' 
-            autoComplete='address-level2'
             name='city'
             value={city}
-            placeholder='City'
             size={"20"}
+            readOnly={readOnly}
+            placeholder='City'
+            onChange={handleChange}
 
           /> 
           <input type="text"
             className='input-inline' 
-            autoComplete='address-level1'
             name='state'
             value={state}
-            placeholder='State'
             size={"5"}
+            readOnly={readOnly}
+            placeholder='State'
+            onChange={handleChange}
 
           /> 
           <input type="text"
             className='input-inline' 
-            autoComplete='postal-code'
             name='postalcode'
             value={postalcode}
-            placeholder='Postal Code'
             size={"10"}
+            readOnly={readOnly}
+            placeholder='Postal Code'
+            onChange={handleChange}
 
           /> 
           <input type="text"
             className='input-inline' 
-            autoComplete='country-name'
             name='country'
             value={country}
-            placeholder='Country'
             size={"20"}
+            readOnly={readOnly}
+            placeholder='Country'
+            onChange={handleChange}
           />
           { readOnly ?
               <Button variant="primary"
@@ -86,7 +97,7 @@ const Address = (data, setData, onEdit) => {
                       <biIcon.BiSolidEdit /> Edit
               </Button> : 
               <Button variant="primary"
-              onClick={onEdit}>
+              onClick={handleSave}>
                   <biIcon.BiSolidSave /> Save
               </Button> }{
             !readOnly && 
