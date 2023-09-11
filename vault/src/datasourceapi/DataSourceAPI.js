@@ -1,4 +1,3 @@
-// import { useState } from 'react';
 
 const mockApiKey = process.env.REACT_APP_MockApi_Key;
 
@@ -33,22 +32,13 @@ class DataSourceApi {
     //         console.log('The Fetch Request for the User Information Failed', e);
     //     }
 
-    getPolicyHolder = async () => { 
+    getPolicyHolder = () => { 
         const url = `${mockApiKey}/user/?`;
-        // const url = new URL('https://64f3b5f1edfa0459f6c6c6b6.mockapi.io/api/user/?');
         const params = new URLSearchParams({ 
             type: 2
         })
-
-        fetch(url + params, { 
-            method: "GET", 
-            headers: {'content-type': 'application/json'},
-        }).then (response => response.json())
-        .then(data => {
-            return data[0]}) 
-        .catch(error => {
-            console.log('The Fetch Request for the User Information Failed', error)
-        })
+        
+        return url + params;
     }   
   
 
@@ -57,31 +47,24 @@ class DataSourceApi {
         try { 
             const response = await fetch(url, { 
                 method: 'PUT',
-                header: { 
+                headers: { 
                     'content-type': 'application/json',
                 },
                 body: JSON.stringify(user)
             }); 
+            return response.json();
         } catch (e) { 
             console.log('The Put Request for User Failed', e);
         }
     } 
 
 
-    getCurrentAddress = async () => { 
-        try{ 
-            const url = `${mockApiKey}/address/1`
-            const response = await fetch(url, { 
-                method: 'GET', 
-                header: { 
-                    'content-type': 'application/json'
-                },
-            })
-             return await response.json(); 
-        
-        } catch (e) { 
-            console.log('The Fetch Request for the User Information Failed', e);
-        }
+    getCurrentAddress = () => { 
+        const url = `${mockApiKey}/address/?`
+        const params = new URLSearchParams({ 
+            current: true
+        })
+        return url + params
     }
 
     putAddressByID = async (address) => { 
@@ -89,7 +72,7 @@ class DataSourceApi {
             const url = `${mockApiKey}/address/${address.id}`
             const response = await fetch(url, { 
                 method: 'PUT', 
-                header: { 
+                headers: { 
                     'content-type': 'application/json'
                 },
                 body: address

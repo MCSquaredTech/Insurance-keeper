@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Button from 'react-bootstrap/Button';
 
@@ -31,6 +31,10 @@ const Personal = ({ data, setData, onEdit }) => {
         setData(dataBackup); 
         setReadOnly(true);
       }
+
+      useEffect(() => {
+
+      },[])
 
     return (
         <>

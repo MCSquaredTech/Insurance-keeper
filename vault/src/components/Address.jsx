@@ -7,7 +7,7 @@ const Address = ({ data, setData, onEdit }) => {
   const [ readOnly, setReadOnly ] = useState(true);
   const [ dataBackup, setDataBackup ] = useState(null);
 
-  const { address, unit, city, state, postalcode, country } = data
+  const { address, unit, city, state, postalcode, country } = data;
   
   const handleChange = (e) => { 
     const { name, value } = e.target;
