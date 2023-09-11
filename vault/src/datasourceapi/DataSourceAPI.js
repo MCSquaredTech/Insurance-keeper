@@ -1,4 +1,4 @@
-// import { useState } from "react";
+// import { useState } from 'react';
 
 const mockApiKey = process.env.REACT_APP_MockApi_Key;
 
@@ -15,37 +15,53 @@ class DataSourceApi {
     //     })
     // }
 
+    // try { 
+    //     const response = await fetch(`${url}${params.toString()}`, { 
+    //         method: 'GET', 
+    //         header: { 
+    //             'content-type': 'application/json'
+    //         },
+    //     })
+    //     if (response.ok) {
+    //         console.log('200 Succss ', await response.json());
+    //         return await response.json();  
+    //     } else { 
+    //         console.log(response.status);
+    //     }
+        
+    //     } catch (e) { 
+    //         console.log('The Fetch Request for the User Information Failed', e);
+    //     }
+
     getPolicyHolder = async () => { 
+        const url = `${mockApiKey}/user/?`;
+        // const url = new URL('https://64f3b5f1edfa0459f6c6c6b6.mockapi.io/api/user/?');
+        const params = new URLSearchParams({ 
+            type: 2
+        })
+
+        fetch(url + params, { 
+            method: "GET", 
+            headers: {'content-type': 'application/json'},
+        }).then (response => response.json())
+        .then(data => {
+            return data[0]}) 
+        .catch(error => {
+            console.log('The Fetch Request for the User Information Failed', error)
+        })
+    }   
+  
+
+    putUserById = async (user) => { 
+        const url = `${mockApiKey}/user/${user.id}`
         try { 
-            
-            const url = `${mockApiKey}/user/2`;
             const response = await fetch(url, { 
-                method: "GET", 
+                method: 'PUT',
                 header: { 
-                    "content-type": "application/json"
+                    'content-type': 'application/json',
                 },
-            })
-            return response.json(); 
-
-        } catch (e) { 
-            console.log('The Fetch Request for the User Information Failed', e);
-        }
-
-    }
-
-    putPolicyHolder = async (holder) => { 
-        const url = `${mockApiKey}/user/${holder.id}`
-        console.log(url);
-        console.log(holder);
-        try { 
-            const response = await fetch(url, { 
-                method: "PUT",
-                header: { 
-                    "content-type": "application/json"
-                },
-                body: JSON.stringify(holder)
+                body: JSON.stringify(user)
             }); 
-            return await response.json();
         } catch (e) { 
             console.log('The Put Request for User Failed', e);
         }
@@ -56,13 +72,30 @@ class DataSourceApi {
         try{ 
             const url = `${mockApiKey}/address/1`
             const response = await fetch(url, { 
-                method: "GET", 
+                method: 'GET', 
                 header: { 
-                    "content-type": "application/json"
+                    'content-type': 'application/json'
                 },
             })
-            return response.json(); 
+             return await response.json(); 
         
+        } catch (e) { 
+            console.log('The Fetch Request for the User Information Failed', e);
+        }
+    }
+
+    putAddressByID = async (address) => { 
+        try {
+            const url = `${mockApiKey}/address/${address.id}`
+            const response = await fetch(url, { 
+                method: 'PUT', 
+                header: { 
+                    'content-type': 'application/json'
+                },
+                body: address
+            })
+            const results = await response.json(); 
+            console.log('Sucess', results);
         } catch (e) { 
             console.log('The Fetch Request for the User Information Failed', e);
         }

@@ -1,18 +1,18 @@
-
 import { useState } from "react";
-import * as biIcon from 'react-icons/bi';
 
 import Button from 'react-bootstrap/Button';
 
+// icon resources 
+import * as biIcon from 'react-icons/bi'
+
 const Personal = ({ data, setData, onEdit }) => {
-    const [ readOnly, setReadOnly ] = useState(true);
+    const [ readOnly, setReadOnly ] = useState(true); 
     const [ dataBackup, setDataBackup ] = useState(null);
-    const { first, last, phone, email, id } = data;
+    const { first, last, phone, email, policy } = data;
 
     const handleOnChange = (event) => {
         const { name, value } = event.target;
-        setData((prevData) => ({ ...prevData, [name]: value }))
-        console.log(data);
+        setData((prevData) => ({...prevData, [name]: value }))
     }
 
     const handleEdit = () => { 
@@ -21,10 +21,12 @@ const Personal = ({ data, setData, onEdit }) => {
       }
     
       const handleSave = () => {
-        onEdit(data);
+        setDataBackup(null); 
         setReadOnly(true);
+        onEdit(data);
+        
       }
-
+    
       const handleCancel = () => { 
         setData(dataBackup); 
         setReadOnly(true);
@@ -32,47 +34,62 @@ const Personal = ({ data, setData, onEdit }) => {
 
     return (
         <>
-            <div className="formBox formOutline" style={{width: "200px"}}>
+            <div className="formBox formOutline" style={{width: "400px"}}>
                 <form>
                     <input
                         type="text"
                         className="inlineBlock"
                         name="first"
+                        size={15}
                         value={first}
-                        onChange={handleOnChange}
-                        readOnly={readOnly} />
+                        readOnly={readOnly}
+                        onChange={handleOnChange} />
                     <input
                         type="text"
                         className="inlineBlock"
                         name="last"
+                        size={26}
                         value={last}
-                        onChange={handleOnChange}
-                        readOnly={readOnly} />
+                        readOnly={readOnly}
+                        onChange={handleOnChange} />
                     <input
                         type="phone"
                         className="inlineBlock"
                         name=" phone"
+                        size={12}
                         value={phone}
-                        onChange={handleOnChange}
-                        readOnly={readOnly} />
+                        readOnly={readOnly}
+                        onChange={handleOnChange} />
                     <input
                         type="email"
                         className="inlineBlock"
                         name="email"
+                        size={29}
                         value={email}
-                        onChange={handleOnChange}
-                        readOnly={readOnly} />
+                        readOnly={readOnly}
+                        onChange={handleOnChange} />
+                    <input
+                        type="text"
+                        className="inlineBlock"
+                        name="policy"
+                        size={45}
+                        value={policy}
+                        readOnly={readOnly}
+                        onChange={handleOnChange} />
                     { readOnly ?
                         <Button variant="primary"
+                            className="btn-margin"
                             onClick={handleEdit}>
                                 <biIcon.BiSolidEdit /> Edit
                         </Button> : 
                         <Button variant="primary"
-                        onClick={handleSave}>
-                            <biIcon.BiSolidSave /> Save
+                            className="btn-margin"
+                            onClick={handleSave}>
+                                <biIcon.BiSolidSave /> Update
                         </Button> }{
                       !readOnly && 
                         <Button variant="primary"
+                            className="btn-margin"
                             onClick={handleCancel}>
                                 <biIcon.BiSolidLock /> Cancel 
                         </Button>    

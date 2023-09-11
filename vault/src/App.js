@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { DataSourceAPI } from './datasourceapi/DataSourceAPI';
-import { createBrowserRouter, Route, Link, NavLink } from "react-router-dom";
+// import { createBrowserRouter, Route, Link, NavLink } from "react-router-dom";
 import Personal from './components/Personal';
 import Address from './components/Address';
 
@@ -10,16 +10,17 @@ function App() {
   const [ address, setAddress ] = useState(null);
 
   const handlePersonalEdit = async (dataSet) => { 
-    await DataSourceAPI.putPolicyHolder(dataSet); 
+    await DataSourceAPI.putUserById(dataSet); 
     getPolicyHolder();
   }
 
-  const handleAddressEdit = (dataSet) => { 
-    console.log(dataSet); 
+  const handleAddressEdit = async (dataSet) => { 
+    await DataSourceAPI.putAddressByID(dataSet);
+    getCurrentAddress();
   }
 
   const getPolicyHolder = async () => { 
-    setUser(await DataSourceAPI.getPolicyHolder());
+    await setUser(DataSourceAPI.getPolicyHolder());
   }
 
   const getCurrentAddress = async () => { 

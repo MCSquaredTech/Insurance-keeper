@@ -42,3 +42,7 @@ html, body {
     margin-bottom: 25px;
     height: 33px;
   }
+
+  .btn-margin {
+    margin: 3px;
+  }

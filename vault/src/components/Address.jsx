@@ -8,10 +8,10 @@ const Address = ({ data, setData, onEdit }) => {
   const [ dataBackup, setDataBackup ] = useState(null);
 
   const { address, unit, city, state, postalcode, country } = data
+  
   const handleChange = (e) => { 
     const { name, value } = e.target;
     setData((prevData) => ({ ...prevData, [name]: value }));
-    console.log(data);
   }
 
   const handleEdit = () => { 
@@ -20,8 +20,10 @@ const Address = ({ data, setData, onEdit }) => {
   }
 
   const handleSave = () => {
-    onEdit(data);
+    setDataBackup(null); 
     setReadOnly(true);
+    onEdit(data);
+    
   }
 
   const handleCancel = () => { 
@@ -93,17 +95,20 @@ const Address = ({ data, setData, onEdit }) => {
           />
           { readOnly ?
               <Button variant="primary"
-                  onClick={handleEdit}>
-                      <biIcon.BiSolidEdit /> Edit
+                className="btn-margin"
+                onClick={handleEdit}>
+                    <biIcon.BiSolidEdit /> Edit
               </Button> : 
               <Button variant="primary"
-              onClick={handleSave}>
-                  <biIcon.BiSolidSave /> Save
+                className="btn-margin"
+                onClick={handleSave}>
+                    <biIcon.BiSolidSave /> Update
               </Button> }{
             !readOnly && 
               <Button variant="primary"
-                  onClick={handleCancel}>
-                      <biIcon.BiSolidLock /> Cancel 
+              className="btn-margin"
+                onClick={handleCancel}>
+                    <biIcon.BiSolidLock /> Cancel 
               </Button>    
           }
       </form>
