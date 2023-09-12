@@ -41,7 +41,11 @@ class DataSourceApi {
         return url + params;
     }   
   
-
+    getItems = () => { 
+        const url = `${mockApiKey}/vault`;
+        return url;
+    }
+    
     putUserById = async (user) => { 
         const url = `${mockApiKey}/user/${user.id}`
         try { 

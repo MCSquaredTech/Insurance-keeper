@@ -3,7 +3,7 @@ import * as biIcon from 'react-icons/bi';
 
 import Button from 'react-bootstrap/Button';
 
-const Address = ({ data, setData, onEdit }) => {
+const Address = ({ data={}, setData, onEdit }) => {
   const [ readOnly, setReadOnly ] = useState(true);
   const [ dataBackup, setDataBackup ] = useState(null);
 

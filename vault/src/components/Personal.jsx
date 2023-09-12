@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 // icon resources 
 import * as biIcon from 'react-icons/bi'
 
-const Personal = ({ data, setData, onEdit }) => {
+const Personal = ({ data={}, setData, onEdit }) => {
     const [ readOnly, setReadOnly ] = useState(true); 
     const [ dataBackup, setDataBackup ] = useState(null);
     const { first, last, phone, email, policy } = data;

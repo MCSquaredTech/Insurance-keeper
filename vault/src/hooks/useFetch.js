@@ -10,14 +10,19 @@ const useFetch = (url, setOption={}) => {
     fetch(url)
         .then(response => response.json())
         .then(data => {
-            setData(data)
-            setOption(data[0]) // to get the first record
+            setData(data);
+            if(data.length === 1) {
+              setOption(data[0]); // to get the first record
+            } else { 
+              setOption(data);
+            }
+            
           })
         .catch(err => setError(err))
         .finally(() => { 
             setLoading(false);
         })
-    },[url]);
+    },[url, setOption]);
 
   return { loading, data, error };
 }

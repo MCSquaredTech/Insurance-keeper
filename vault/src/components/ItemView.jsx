@@ -1,16 +1,25 @@
 
-const ItemView = (data) => {
-  const { number, picture, description, value } = data;
+const ItemView = ({ data, setData}) => {
+  
+
   return (
     <div className="container">
       <div className="row">
         <div className="col">
-          <div className="itemTheme">
-            <span className="itemNumber">{number}</span>
-            <span className="itemPicture">{picture}</span>
-            <span className="itemDescription">{description}</span>
-            <span className="itemValue">{value}</span>
-          </div>
+          {data.map((item, key) => { 
+            return (
+              <div>
+                <li key={item.id}>
+                  <span className="itemId" style={{display: 'inline-block', width: '4rem'}}>Key: {item.id}  </span>
+                  <span className="itemNumber" style={{display: 'inline-block', width: '15rem'}}> Item Number: {item.number}  </span>
+                  <span className="itemDescription" style={{display: 'inline-block', width: '30rem'}}>{item.description}</span>
+                  <span className="itemValue"style={{display: '', width: '5rem', textAlign: 'right'}}>{item.value}</span>
+                </li>
+              </div>
+          )
+              
+          })}
+          
         </div>
       </div>
       
