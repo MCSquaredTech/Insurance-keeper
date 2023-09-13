@@ -28,6 +28,10 @@ function App() {
     await DataSourceAPI.putAddressByID(dataSet);
   }
 
+  const handleClick = (item) => { 
+    console.log('item clicked', item);
+  }
+
   return (
     <>
       <div>
@@ -56,7 +60,7 @@ function App() {
           { iData    && 
                      <ItemView 
                         data={item}
-                        setData={setItem} /> }
+                        onClick={handleClick} /> }
         </span>
       </div>
     </>
