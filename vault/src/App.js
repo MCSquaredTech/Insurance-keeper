@@ -4,7 +4,7 @@ import { DataSourceAPI } from './datasourceapi/DataSourceAPI';
 import Personal from './components/Personal';
 import Address from './components/Address';
 import useFetch from './hooks/useFetch';
-import ItemView from './components/ItemView';
+import ItemsList from './components/ItemsList';
 
 function App() {
 
@@ -30,6 +30,18 @@ function App() {
 
   const handleClick = (item) => { 
     console.log('item clicked', item);
+  }
+
+  const handleSave = (dataSet) => { 
+    console.log('save item', dataSet); 
+  }
+
+  const handleEdit = (dataSet) => { 
+    console.log('Edit Item', dataSet);
+  }
+
+  const handleDelete = (dataSet) => { 
+    console.log("Delete Item", dataSet);
   }
 
   return (
@@ -58,9 +70,14 @@ function App() {
           { iError && <div> { iError } </div> }
           { iLoading && <div> Loading ... </div> }
           { iData    && 
-                     <ItemView 
+                     <ItemsList 
                         data={item}
-                        onClick={handleClick} /> }
+                        policyHolder={user}
+                        onClick={handleClick}
+                        onSave={handleSave}
+                        onEdit={handleEdit}
+                        onDelete={handleDelete}
+                         /> }
         </span>
       </div>
     </>

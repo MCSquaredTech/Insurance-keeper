@@ -32,13 +32,13 @@ const Address = ({ data={}, setData, onEdit }) => {
   }
 
   return (
-    <div className='formBox formOutline' style={{width: "425px"}}>
+    <div className='formBox formOutline' style={{width: "420px"}}>
       <form>
           <input type='text'
             className='input-block'
             name='address'
             value={address}
-            size={"45"}
+            size={"37"}
             readOnly={readOnly}
             placeholder='Address'
             onChange={handleChange}
@@ -48,7 +48,7 @@ const Address = ({ data={}, setData, onEdit }) => {
             className='input-block' 
             name='unit'
             value={unit}
-            size={"45"}
+            size={"37"}
             readOnly={readOnly}
             placeholder='Optional Information'
             onChange={handleChange}
@@ -58,7 +58,7 @@ const Address = ({ data={}, setData, onEdit }) => {
             className='input-inline' 
             name='city'
             value={city}
-            size={"20"}
+            size={"25"}
             readOnly={readOnly}
             placeholder='City'
             onChange={handleChange}
@@ -88,7 +88,7 @@ const Address = ({ data={}, setData, onEdit }) => {
             className='input-inline' 
             name='country'
             value={country}
-            size={"20"}
+            size={"23.5"}
             readOnly={readOnly}
             placeholder='Country'
             onChange={handleChange}

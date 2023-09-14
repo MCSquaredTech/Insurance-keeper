@@ -38,13 +38,13 @@ const Personal = ({ data={}, setData, onEdit }) => {
 
     return (
         <>
-            <div className="formBox formOutline" style={{width: "400px"}}>
+            <div className="formBox formOutline" style={{width: "420px"}}>
                 <form>
                     <input
                         type="text"
                         className="inlineBlock"
                         name="first"
-                        size={15}
+                        size={10}
                         value={first}
                         readOnly={readOnly}
                         onChange={handleOnChange} />
@@ -52,7 +52,7 @@ const Personal = ({ data={}, setData, onEdit }) => {
                         type="text"
                         className="inlineBlock"
                         name="last"
-                        size={26}
+                        size={23}
                         value={last}
                         readOnly={readOnly}
                         onChange={handleOnChange} />
@@ -60,7 +60,7 @@ const Personal = ({ data={}, setData, onEdit }) => {
                         type="phone"
                         className="inlineBlock"
                         name=" phone"
-                        size={12}
+                        size={10}
                         value={phone}
                         readOnly={readOnly}
                         onChange={handleOnChange} />
@@ -68,7 +68,7 @@ const Personal = ({ data={}, setData, onEdit }) => {
                         type="email"
                         className="inlineBlock"
                         name="email"
-                        size={29}
+                        size={23}
                         value={email}
                         readOnly={readOnly}
                         onChange={handleOnChange} />
@@ -76,7 +76,7 @@ const Personal = ({ data={}, setData, onEdit }) => {
                         type="text"
                         className="inlineBlock"
                         name="policy"
-                        size={45}
+                        size={37}
                         value={policy}
                         readOnly={readOnly}
                         onChange={handleOnChange} />
