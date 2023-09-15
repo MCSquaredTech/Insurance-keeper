@@ -5,6 +5,7 @@ import Personal from './components/Personal';
 import Address from './components/Address';
 import useFetch from './hooks/useFetch';
 import ItemsList from './components/ItemsList';
+import ItemCardView from './components/ItemCardView';
 
 function App() {
 
@@ -29,7 +30,7 @@ function App() {
   }
 
   const handleClick = (item) => { 
-    console.log('item clicked', item);
+    console.log('Clicked Item', item);
   }
 
   const handleSave = (dataSet) => { 
@@ -50,21 +51,12 @@ function App() {
         <span>
           { phError && <div> { phError } </div>}
           { phLoading && <div> Loading ... </div> }
-          { phUser    && 
-                      <Personal 
-                        data={user} 
-                        setData={setUser}
-                        onEdit={handlePersonalEdit} /> }
+          
         </span>
         <span>
           { caError && <div> { caError } </div> }
           { caLoading && <div> Loading ...  </div> }
-          {/* { !caLoading && setAddress(caData[0])  }  */}
-          { caData    &&
-                      <Address 
-                        data={address} 
-                        setData={setAddress}
-                        onEdit={handleAddressEdit} /> }
+          
         </span>
         <span>
           { iError && <div> { iError } </div> }
