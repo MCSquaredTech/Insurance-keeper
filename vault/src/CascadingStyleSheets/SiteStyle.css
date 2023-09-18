@@ -1,3 +1,7 @@
+* { 
+  box-sizing: border-box;
+}
+
 html, body { 
 
     padding: 0; 
@@ -13,8 +17,6 @@ html, body {
     display: flex;
     border: 1px solid #777; 
     border-radius: 4px;
-    align-content: end;
-    align-items: end;
 }
 
 .formBox input {
@@ -46,3 +48,73 @@ html, body {
   .btn-margin {
     margin: 3px;
   }
+
+  /* Page Header CSS */
+  .header {
+    background-color: #222;
+    color: #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+    padding: 0 3rem;
+    width: 100vw;
+    height: 75px; 
+    bottom: 0;
+  }
+
+  /* Page Footer CSS */
+  .footer {
+    height: 30px;
+    flex-shrink: 0;
+    line-height: 30px;
+    padding: 0 8px;
+    bottom: 0;
+    text-align: center;
+  }
+
+  /* Page Sidebar CSS */
+  .sidebar { 
+    display: flex;
+    flex-flow: column wrap;
+    width: 250px; 
+    /* min-width: 80px; */
+  
+    /* padding: 2px; */
+    height: calc(100vh - 90px);
+    /* min-height: 400px; */
+    left: -4px;
+    top: 0px;
+  
+    overflow: hidden;
+  }
+  
+  .sidebar-header { 
+    display: flex; 
+    flex: flex-flow wrap;
+    border-bottom: 1px solid white; 
+    padding: 0;
+    width: 250px; 
+    /* min-width: 80px; */
+    
+  
+    padding: 2px;
+    margin: 15px; 
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    text-align: center;  
+    color: #ddd;
+  }
+  
+  .sidebar-menu { 
+    background: #222; 
+    color: #aaa;
+  }
+  
+  .sidebar-menuitem:hover { 
+    background: #aaa;
+    color: #222;
+  }
+
+  /* Page Layout Theme */

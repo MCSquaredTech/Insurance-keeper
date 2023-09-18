@@ -1,79 +1,70 @@
-import { useState } from 'react';
-import { DataSourceAPI } from './datasourceapi/DataSourceAPI';
-// import { createBrowserRouter, Route, Link, NavLink } from "react-router-dom";
-import Personal from './components/Personal';
-import Address from './components/Address';
-import useFetch from './hooks/useFetch';
-import ItemsList from './components/ItemsList';
-import ItemCardView from './components/ItemCardView';
+// import { useState } from 'react';
+// import useFetch from './hooks/useFetch';
+
+// import { DataSourceAPI } from './datasourceapi/DataSourceAPI';
+
+import LayoutThemes from './pages/layouts/LayoutThemes'; 
+import HomePage from './pages/HomePage';
+import Items from './pages/Items';
+
+import { createBrowserRouter, 
+        RouterProvider,
+        Route, 
+        createRoutesFromElements} from "react-router-dom";
+
 
 function App() {
 
-  const [ user, setUser ] = useState(null);
-  const Userurl = DataSourceAPI.getPolicyHolder()
-  const { data: phUser, loading: phLoading, error: phError } = useFetch(Userurl, setUser);
+  // const [ user, setUser ] = useState(null);
+  // const Userurl = DataSourceAPI.getPolicyHolder()
+  // const { data: phUser, loading: phLoading, error: phError } = useFetch(Userurl, setUser);
    
-  const [ address, setAddress ] = useState(null);
-  const addressUrl = DataSourceAPI.getCurrentAddress();
-  const { data: caData, loading: caLoading, error: caError } = useFetch(addressUrl, setAddress);
+  // const [ address, setAddress ] = useState(null);
+  // const addressUrl = DataSourceAPI.getCurrentAddress();
+  // const { data: caData, loading: caLoading, error: caError } = useFetch(addressUrl, setAddress);
 
-  const [ item, setItem ] = useState(null); 
-  const itemUrl = DataSourceAPI.getItems(); 
-  const { data: iData, loading: iLoading, error: iError } = useFetch(itemUrl, setItem); 
+  // const [ item, setItem ] = useState(null); 
+  // const itemUrl = DataSourceAPI.getItems(); 
+  // const { data: iData, loading: iLoading, error: iError } = useFetch(itemUrl, setItem); 
   
-  const handlePersonalEdit = async (dataSet) => { 
-    await DataSourceAPI.putUserById(dataSet); 
-  }
+  // const handlePersonalEdit = async (dataSet) => { 
+  //   await DataSourceAPI.putUserById(dataSet); 
+  // }
 
-  const handleAddressEdit = async (dataSet) => { 
-    await DataSourceAPI.putAddressByID(dataSet);
-  }
+  // const handleAddressEdit = async (dataSet) => { 
+  //   await DataSourceAPI.putAddressByID(dataSet);
+  // }
 
-  const handleClick = (item) => { 
-    console.log('Clicked Item', item);
-  }
+  // const handleClick = (item) => { 
+  //   console.log('Clicked Item', item);
+  // }
 
-  const handleSave = (dataSet) => { 
-    console.log('save item', dataSet); 
-  }
+  // const handleSave = (dataSet) => { 
+  //   console.log('save item', dataSet); 
+  // }
 
-  const handleEdit = (dataSet) => { 
-    console.log('Edit Item', dataSet);
-  }
+  // const handleEdit = (dataSet) => { 
+  //   console.log('Edit Item', dataSet);
+  // }
 
-  const handleDelete = (dataSet) => { 
-    console.log("Delete Item", dataSet);
-  }
+  // const handleDelete = (dataSet) => { 
+  //   console.log("Delete Item", dataSet);
+  // }
+
+  const router = createBrowserRouter(
+    createRoutesFromElements( 
+      <Route element={<LayoutThemes />}>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/items" element={<Items />} />
+      </Route>
+  
+    )
+  )
 
   return (
-    <>
-      <div>
-        <span>
-          { phError && <div> { phError } </div>}
-          { phLoading && <div> Loading ... </div> }
-          
-        </span>
-        <span>
-          { caError && <div> { caError } </div> }
-          { caLoading && <div> Loading ...  </div> }
-          
-        </span>
-        <span>
-          { iError && <div> { iError } </div> }
-          { iLoading && <div> Loading ... </div> }
-          { iData    && 
-                     <ItemsList 
-                        data={item}
-                        policyHolder={user}
-                        onClick={handleClick}
-                        onSave={handleSave}
-                        onEdit={handleEdit}
-                        onDelete={handleDelete}
-                         /> }
-        </span>
-      </div>
-    </>
+    <RouterProvider router={router} />
   )
+
 }
 
 export default App;
