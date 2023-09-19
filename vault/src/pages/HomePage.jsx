@@ -2,6 +2,9 @@
 const HomePage = () => {
   return (
     <div>
+      <h1> Welcome to <br /> 
+           Insurance Keeper Vault</h1>
+      <hr />
       <p>Deserunt laboris anim amet nisi aliqua adipisicing ullamco voluptate ut qui cillum ut. 
           Reprehenderit voluptate duis labore veniam tempor et cillum dolore occaecat sint ea. Fugiat 
           occaecat pariatur laboris sunt minim tempor labore aute nisi. Ullamco nostrud duis mollit proident 

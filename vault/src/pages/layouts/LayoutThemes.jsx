@@ -15,10 +15,10 @@ const LayoutThemes = () => {
         <div className="col-md-auto">
           <PageSidebar />
         </div>
-        {/* <div className='col-md-10'>
+        <div className='col-md-10'>
           <Outlet />
           <PageFooter /> 
-        </div> */}
+        </div>
       </div>    
     </container>
   )

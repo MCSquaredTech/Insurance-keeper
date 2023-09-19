@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import * as faIcons from 'react-icons/fa'; 
 import * as bsIcons from 'react-icons/bs';
 import * as riIcons from 'react-icons/ri';
-import * as aiIcons from 'react-icons/ai';
+// import * as aiIcons from 'react-icons/ai';
 import { 
   Sidebar, 
   Menu, 
@@ -41,21 +41,17 @@ const PageSidebar = () => {
             className='sidebar-header'
             >{menuActive}
           </div> 
-          <MenuItem className='sidebar-menuitem'
-            icon={<aiIcons.AiFillDashboard size={"20px"}/>}
-            component={<Link to="/"  />}
-            onClick={() => setMenuActive('Home')}
-            >Dashboard</MenuItem>
+          
           <MenuItem className='sidebar-menuitem'
             icon={<bsIcons.BsBuildingFill size={"20px"}/>}
-            component={<Link to="company"  />}
-            onClick={() => setMenuActive('Company')}
-            >Company</MenuItem>
+            component={<Link to="/"  />}
+            onClick={() => setMenuActive('HomePage')}
+            >Home</MenuItem>
           <MenuItem className='sidebar-menuitem'
             icon={<riIcons.RiContactsFill size={"20px"}/>}
-            component={<Link to="/sales" />} 
+            component={<Link to="/Items" />} 
             onClick={() => setMenuActive('Sales')}
-            >Sales</MenuItem>
+            >Vault List</MenuItem>
           <MenuItem className='sidebar-menuitem'
             icon={<faIcons.FaRegIdBadge size={"20px"}/>}
             component={<Link to="/support" />} 

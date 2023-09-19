@@ -1,21 +1,30 @@
 import ItemsList from "../components/ItemsList"
 
 
-function Items(data, setData, policyHolder, onClick, onSave, onEdit, onDelete) {
-    const { first, last, policy, phone, email } = policyHolder
+function Items() {
+    // console.log(policyHolder);
+    // const { first, last, policy, phone, email } = policyHolder;
 
     return (
         <div>
-        <div>
+            <h1>Vault Items</h1>
+            <hr />
+        {/* <div>
             <div>Policy Holder: {first} {last} </div>
             <div>Policy Number: {policy} </div>
             <div>Phone: {phone}  Email: {email} </div>
             <hr />
-        </div>
-        <div>
+        </div> */}
+        {/* <div>
             <ItemsList data={data}
-                    onClick={onClick} /> 
-        </div>
+                    setData={setData}
+                    onClick={onClick} 
+                    onSave={onSave}
+                    onEdit={onEdit} 
+                    onDelete={onDelete}
+                    /> 
+        </div> */}
+
         </div>
     )
 }
