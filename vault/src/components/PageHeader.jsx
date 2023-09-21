@@ -16,7 +16,7 @@ const PageHeader = () => {
               style={{ maxHeight: '60px' }}
               navbarScroll
             >
-              <Nav.Link href="#action1"><biIcons.BiLogInCircle /></Nav.Link>
+              <Nav.Link href="#action1"><biIcons.BiLogInCircle />Sign-in</Nav.Link>
               <Nav.Link href="#action2">Link</Nav.Link>
             </Nav>
           </Navbar.Collapse>

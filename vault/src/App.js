@@ -5,7 +5,7 @@ import { DataSourceAPI } from './datasourceapi/DataSourceAPI';
 
 import LayoutThemes from './pages/layouts/LayoutThemes'; 
 import HomePage from './pages/HomePage';
-import Items from './pages/Items';
+import Items, { itemListLoader, policyLoader } from './pages/Items';
 
 import Loading from './components/Loading';
 
@@ -18,7 +18,11 @@ const router = createBrowserRouter(
   createRoutesFromElements( 
     <Route element={<LayoutThemes />}>
       <Route path="/" element={<HomePage />} />
-      <Route path="/items" element={<Items />} />
+      <Route 
+        path="/items" 
+        element={<Items />} 
+        loader={itemListLoader}
+        />
     </Route>
   )
 )

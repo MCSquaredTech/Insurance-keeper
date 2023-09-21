@@ -1,6 +1,6 @@
 import ItemView from "./ItemView";
 
-const ItemsList = ({data, onClick}) => {
+const ItemsList = () => {
     
   const item = data.map((item, index) => { 
       return <ItemView item={item} key={index} onClick={onClick} />
@@ -14,3 +14,5 @@ const ItemsList = ({data, onClick}) => {
 }
 
 export default ItemsList;
+
+
