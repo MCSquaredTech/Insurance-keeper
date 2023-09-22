@@ -32,12 +32,9 @@ const Personal = ({ data={}, setData, onEdit }) => {
         setReadOnly(true);
       }
 
-      useEffect(() => {
-
-      },[])
-
     return (
         <>
+        { data &&
             <div className="formBox formOutline" style={{width: "420px"}}>
                 <form>
                     <input
@@ -99,9 +96,21 @@ const Personal = ({ data={}, setData, onEdit }) => {
                         </Button>    
                     }
                 </form>
-            </div>
+            </div>}
         </>
     )
 }
 
 export default Personal;
+
+export const getPolicyLoader = async () => {
+    const url = 'https://64f3b5f1edfa0459f6c6c6b6.mockapi.io/api/user?type=2';
+
+    const response = await fetch(url, { 
+      method: "GET",
+      headers: { 
+        'content-type': 'application/json'
+      },
+    })
+    return response.json();
+  }
