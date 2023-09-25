@@ -5,8 +5,13 @@ import Personal, { getPolicyLoader } from '../components/Personal';
 
 
 function Items() {
-    const [ user, setUser ] = useState(null)
-    const items = useLoaderData();
+    const [ user, setUser ] = useState(null);
+    const [ items, setItems ] = useState(null);
+    
+    const data = useLoaderData();
+
+    setUser(data.user);
+    setItems(data.vault);
 
     const handleEdit = (dataSet) => { 
       console.log('Edit Item', dataSet);
@@ -35,23 +40,26 @@ function Items() {
 export default Items;
 
 export const itemListLoader = async () => { 
-    const response = await fetch('https://64f3b5f1edfa0459f6c6c6b6.mockapi.io/api/vault', { 
-      method: "GET",
-      headers: { 
-        'content-type': 'application/json'
-      },
-    })
-    return response.json();   
-  }
+    const vault = null;
+    const user = null;
 
-  // export const getPolicyLoader = async () => {
-  //   const url = 'https://64f3b5f1edfa0459f6c6c6b6.mockapi.io/api/user?type=2';
+    const urlUser = 'https://64f3b5f1edfa0459f6c6c6b6.mockapi.io/api/user?type=2';
+    const urlVault = 'https://64f3b5f1edfa0459f6c6c6b6.mockapi.io/api/vault';
+ 
+    const loadDataSets = async (url) => { 
+      const response = fetch(url, {
+        method: "GET",
+        headers: { 
+          'content-type': 'application/json'
+          },
+        })  
+        return await response.json(); 
+    };
 
-  //   const response = await fetch(url, { 
-  //     method: "GET",
-  //     headers: { 
-  //       'content-type': 'application/json'
-  //     },
-  //   })
-  //   return response.json();
-  // }
+    vault = await loadDataSets(urlVault);
+    user = await loadDataSets(urlUser);
+    
+    if ( vault && user ) {
+       return { vault, user};
+      }
+  }   

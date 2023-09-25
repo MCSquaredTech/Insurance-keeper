@@ -5,7 +5,7 @@ import { DataSourceAPI } from './datasourceapi/DataSourceAPI';
 
 import LayoutThemes from './pages/layouts/LayoutThemes'; 
 import HomePage from './pages/HomePage';
-import Items, { itemListLoader, policyLoader } from './pages/Items';
+import Items, { itemListLoader } from './pages/Items';
 
 import Loading from './components/Loading';
 
